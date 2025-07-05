@@ -1,0 +1,19 @@
+<% content_for :login_info do %>
+<div class="button">
+    <form class="login" action="/play" method="post">
+      <dl>
+        <dt>
+          <label for="name">Enter your name for the world to see!</label>
+        </dt>
+        <dd>
+          <input id="name" name="name" placeholder="What shall we call you?" type="text" value="<%= params[:name] %>">
+        </dd>
+      </dl>
+      <button type="submit">Play!</button>
+    </form>
+
+    <form action="/" method="get">
+      <button type="submit">View Leaderboard!</button>
+    </form>
+  </div>
+<% end %>

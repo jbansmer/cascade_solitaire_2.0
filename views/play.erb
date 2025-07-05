@@ -1,0 +1,94 @@
+<% content_for :header do %>
+  <h2 class="title">
+    <% if @name %>
+      <a href="/play">Start New Game!</a>
+    <% else %>
+      <a href="/practice">Start New Game!</a>
+    <% end %>
+    <a href="/">View the Leaderboard!</a>
+  </h2>
+  <% if @name %>
+    <h2 class="title">Playing as <%= @name %>! Your high score is <%= @high_score %>! This game's score is <%= @score %>!</h2>
+  <% else %>
+    <h2 class="title">Practice round! This game's score is <%= @score %>!</h2>
+  <% end %>
+<% end %>
+
+<% content_for :foundation do %>
+  <img
+    id="foundation"
+    src="/cards/<%= @foundation[:file_name] %>.png"
+    alt="<%= @foundation[:file_name] %>">
+<% end %>
+
+<% content_for :blank do %>
+  <img
+    id="blank_spot"
+    src="/cards/blank.png"
+    alt="blank spot">
+<% end %>
+
+<% content_for :blank_with_border do %>
+  <img
+    id="blank_spot"
+    src="/cards/blank.png"
+    alt="blank spot">
+<% end %>
+
+<% content_for :back do %>
+  <% next_pile = @current_pile == 1 ? 2 : 1 %>
+  <form action="/switch_pile" method="post">
+    <input type="hidden" name="switch_piles" value="<%= next_pile %>" />
+    <button type="submit">
+      <img
+        id="back_of_card"
+        src="/cards/back.png"
+        alt="face down playing hand">
+    </button>
+  </form>
+<% end %>
+
+<% content_for :spades_draw_pile do %>
+  <img
+    id="spade_draw_pile" 
+    src="/cards/back.png"
+    alt="spade draw pile">
+<% end %>
+
+<% content_for :hearts_draw_pile do %>
+  <img
+    id="heart_draw_pile"
+    src="/cards/back.png"
+    alt="heart draw pile">
+<% end %>
+
+<% content_for :clubs_draw_pile do %>
+  <img
+    id="club_draw_pile"
+    src="/cards/back.png"
+    alt="club draw pile">
+<% end %>
+
+<% content_for :diamonds_draw_pile do %>
+  <img
+    id="diamond_draw_pile"
+    src="/cards/back.png"
+    alt="diamond draw pile">
+<% end %>
+
+<% content_for :play_pile do %>
+<div class="button">
+  <% sort_playable_cards(@current_pile) do |pile| %>
+
+    <form action="/<%= @current_pile %>/<%= pile[:rank] %>/<%= pile[:suit] %>" method="post">
+      <input type="hidden" name="play_to_foundation" value="<%= pile[:file_name] %>" />
+      <button class="button" type="submit">
+        <img
+          id="current_play_pile"
+          src="/cards/<%= pile[:file_name] %>.png"
+          alt="<%= pile[:file_name] %>">
+      </button>
+    </form>
+  <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,40 @@
+.title {
+  text-align: center;
+}
+
+.layout div {
+  text-align: center;
+}
+
+.layout img {
+  width: 100px;
+  height: 145px;
+  margin-right: 0%;
+  margin-left: 0%;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+
+.button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /*flex-start; /* or center, space-between, space-around */
+  align-items: center;
+  flex-wrap: nowrap; /* prevents wrapping to new lines */
+}
+
+.table {
+  display: flex;
+  justify-content: center;
+}
+
+.leaderboard {
+  width: 25%;
+  table-layout: auto;
+  justify-content: right;
+}
+
+form.login {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+  <title>Cascade Solitaire</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/stylesheets/solitaire.css">
+    <script src="/javascripts/jquery-3.7.1.min.js"></script>
+    <script src="/javascripts/application.js"></script>
+  </head>
+
+  <header>
+      <div class="actions">
+        <%== yield_content :header %>
+      </div>
+  </header>
+
+  <body>
+    <div class="layout">
+      <div>
+        <% if any_cards_in_draw_pile?("spades") %>
+          <%== yield_content :spades_draw_pile %>
+        <% else %>
+          <%== yield_content :blank_with_border %>
+        <% end %>
+      </div>
+      <div>
+        <% if any_cards_in_draw_pile?("diamonds") %>
+          <%== yield_content :diamonds_draw_pile %>
+        <% else %>
+          <%== yield_content :blank_with_border %>
+        <% end %>
+
+        <%== yield_content :foundation %>
+
+        <% if any_cards_in_draw_pile?("hearts") %>
+          <%== yield_content :hearts_draw_pile %>
+        <% else %>
+          <%== yield_content :blank_with_border %>
+        <% end %>
+      </div>
+      <div class="button">
+        <% if any_cards_in_next_play_pile?(@current_pile) && @current_pile == 2 %>
+          <%== yield_content :back %>
+        <% else %>
+          <%== yield_content :blank %>
+        <% end %>
+
+        <%== yield_content :blank %>
+
+        <% if any_cards_in_draw_pile?("clubs") %>
+          <%== yield_content :clubs_draw_pile %>
+        <% else %>
+          <%== yield_content :blank_with_border %>
+        <% end %>
+
+        <%== yield_content :blank %>
+
+        <% if any_cards_in_next_play_pile?(@current_pile) && @current_pile == 1 %>
+          <%== yield_content :back %>
+        <% else %>
+          <%== yield_content :blank %>
+        <% end %>
+      </div>
+      <div class="layout">
+            <% if session[:error] %>
+        <p>
+          <%= session.delete(:error) %>
+            <form action="/play/<%= @current_pile %>" method="get">
+              <input type="hidden" name="got_it" value="<%= @current_pile %>" />
+              <button type="submit">Got It!</button>
+            </form>
+          </p>
+        <% else %>
+          <p>Here are the cards in pile number <%= @current_pile %>:</p>
+        <% end %>
+      </div>
+      <div class="button"><%== yield_content :play_pile %></div>
+    </div>
+  </body>
+</html>

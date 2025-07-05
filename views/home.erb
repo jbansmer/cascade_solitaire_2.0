@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+  <head>
+  <title>Cascade Solitaire</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/stylesheets/solitaire.css">
+    <script src="/javascripts/jquery-3.7.1.min.js"></script>
+    <script src="/javascripts/application.js"></script>
+  </head>
+
+  <header>
+    <div class="actions">
+      <h2 class="title">
+        <p>Welcome to Cascade Solitaire!</p>
+      </h2>
+    </div>
+  </header>
+
+  <body>
+    <div class="title">
+      <div>
+        <h3>
+          <a href="/practice">Practice Playing Cascade!</a>
+        </h3>
+      </div>
+      <div>
+        <h3>
+          <a href="/login">Play and Keep Score!</a>
+        </h3>
+      </div>
+    </div>
+
+    <div>
+      <% if @login %>
+        <%== yield_content :login_info %>
+      <% else %>
+        <div class="table">
+          <table class="leaderboard">
+            <caption>Cascade Solitaire Players' High Scores!</caption>
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scopre="col">Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% view_the_leaderboard do |name_score| %>
+                <tr>
+                  <th scope="row"><%== name_score[:name] %></th>
+                  <td><%== name_score[:score].to_i %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    </div>
+  </body>
+</html>
