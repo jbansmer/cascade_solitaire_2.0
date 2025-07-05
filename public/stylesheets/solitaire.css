@@ -29,7 +29,7 @@ img#blank_spot {
   justify-content: center; /*flex-start; /* or center, space-between, space-around */
   align-items: center;
   flex-wrap: nowrap; /* prevents wrapping to new lines */
-  padding-block: 0px;
+  padding-block: 4px;
   padding-inline: 2px;
 }
 
