@@ -74,6 +74,12 @@ def update_high_score(name)
   end
 end
 
+def add_name_if_needed(name)
+  unless @game_layout.existing_name?(name)
+    @game_layout.add_new_player_name(name)
+  end
+end
+
 get "/" do
   @login = false
 
@@ -101,6 +107,7 @@ end
 
 post "/play" do
   session[:name] = params[:name]
+  add_name_if_needed(session[:name])
   session[:high_score] = current_high_score(session[:name])
   @game_layout.deal_new_game
   redirect "/play/1"

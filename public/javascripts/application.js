@@ -5,8 +5,7 @@ $(function() {
     event.stopPropagation();
 
     var form = $(this);
-    var name = form.attr("value");
-    var ok = confirm("Do you want to play as " + name + "?");
+    var ok = confirm("Are you sure about that name?");
 
     if (ok) {
       this.submit()

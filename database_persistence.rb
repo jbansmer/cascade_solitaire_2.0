@@ -39,6 +39,11 @@ class DatabasePersistence
     names.include?(name)
   end
 
+  def add_new_player_name(name)
+    sql = "INSERT INTO players(name, high_score) VALUES ($1, 1);"
+    query(sql, name)
+  end
+
   def deal_new_game
     reset_game_layout
     @deck.deal_game
