@@ -2,8 +2,6 @@ require "sinatra"
 require "sinatra/content_for"
 require "tilt/erubi"
 
-require "pry"
-
 require_relative "./dealer.rb"
 require_relative "database_persistence"
 

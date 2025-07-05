@@ -1,7 +1,5 @@
 require "pg"
 
-require "pry"
-
 require_relative "./dealer.rb"
 
 class DatabasePersistence
