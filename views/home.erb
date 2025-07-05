@@ -49,7 +49,7 @@
               <% view_the_leaderboard do |name_score| %>
                 <tr>
                   <th scope="row"><%== name_score[:name] %></th>
-                  <td><%== name_score[:score].to_i %></td>
+                  <td align="center"><%== name_score[:score].to_i %></td>
                 </tr>
               <% end %>
             </tbody>

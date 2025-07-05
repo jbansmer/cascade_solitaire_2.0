@@ -43,8 +43,10 @@
       <div class="button">
         <% if any_cards_in_next_play_pile?(@current_pile) && @current_pile == 2 %>
           <%== yield_content :back %>
-        <% else %>
+        <% elsif @current_pile == 1 %>
           <%== yield_content :blank %>
+        <% else %>
+          <%== yield_content :blank_with_border %>
         <% end %>
 
         <%== yield_content :blank %>
@@ -59,8 +61,10 @@
 
         <% if any_cards_in_next_play_pile?(@current_pile) && @current_pile == 1 %>
           <%== yield_content :back %>
-        <% else %>
+        <% elsif @current_pile == 2 %>
           <%== yield_content :blank %>
+        <% else %>
+          <%== yield_content :blank_with_border %>
         <% end %>
       </div>
       <div class="layout">

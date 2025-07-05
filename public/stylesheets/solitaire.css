@@ -15,12 +15,28 @@
   margin-bottom: 0%;
 }
 
+img#blank_spot.border {
+  border: 1px solid #000000;
+}
+
+img#blank_spot {
+  padding-inline: 2px;
+}
+
 .button {
   display: flex;
   flex-direction: row;
   justify-content: center; /*flex-start; /* or center, space-between, space-around */
   align-items: center;
   flex-wrap: nowrap; /* prevents wrapping to new lines */
+  padding-block: 0px;
+  padding-inline: 2px;
+}
+
+button {
+  padding-inline: 2px;
+  padding-block: 0px;
+  border-width: 0px;
 }
 
 .table {
